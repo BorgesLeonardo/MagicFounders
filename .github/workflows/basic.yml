@@ -25,11 +25,6 @@ jobs:
         cd backend
         npm install
 
-    - name: Run backend tests
-      run: |
-        cd backend
-        npm test
-    
     - name: Add .env file
       run: |
         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" > backend/.env
@@ -38,6 +33,11 @@ jobs:
       run: |
         cd backend
         npm run dev
+    
+    - name: Run backend tests
+      run: |
+        cd backend
+        npm test
 
     - name: Build backend
       run: |
