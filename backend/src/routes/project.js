@@ -34,4 +34,9 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
+// Rota de exemplo
+router.get('/', (req, res) => {
+  res.status(200).json({ message: 'Project route is working' });
+});
+
 module.exports = router;

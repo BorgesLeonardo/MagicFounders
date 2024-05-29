@@ -176,4 +176,19 @@ router.get('/reset-password/:token', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'reset-password.html'));
 });
 
+// Rota de exemplo
+router.get('/', (req, res) => {
+    res.status(200).json({ message: 'Auth route is working' });
+  });
+
+// Rota de exemplo
+router.get('/', (req, res) => {
+    res.status(200).json({ message: 'Project route is working' });
+  });
+
+// Rota de exemplo
+router.get('/', (req, res) => {
+  res.status(200).json({ message: 'Project route is working' });
+});
+
 module.exports = router;

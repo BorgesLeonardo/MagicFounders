@@ -29,6 +29,10 @@ jobs:
       run: |
         cd backend
         npm test
+    
+    - name: Add .env file
+      run: |
+        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" > backend/.env
 
     - name: Run backend serve
       run: |
