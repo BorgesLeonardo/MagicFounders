@@ -31,9 +31,6 @@ jobs:
         npm test
 
     - name: Run backend serve
-      env: 
-        env:
-        MONGODB_URI: ${{ secrets.MONGODB_URI }}
       run: |
         cd backend
         npm run dev
