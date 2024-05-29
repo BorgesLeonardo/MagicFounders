@@ -63,7 +63,7 @@ const getProjectById = async (req, res) => {
 
 // Função para atualizar um projeto por ID
 const updateProject = async (req, res) => {
-    const { title, author, description, goal, image, deadline, category, daysLeft, supported, progress } = req.body;
+    const { title, author, description, goal, image, deadline, category, daysLeft, supporters, supported, progress, } = req.body;
     try {
         const project = await Project.findById(req.params.id);
         if (!project) {
@@ -80,6 +80,7 @@ const updateProject = async (req, res) => {
         project.daysLeft = daysLeft || project.daysLeft;
         project.progress = progress || project.progress;
         project.supported = supported || project.supported;
+        project.supporters = supporters || project.supporters;
 
         await project.save();
         res.status(200).json(project);

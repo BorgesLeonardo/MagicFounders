@@ -8,11 +8,11 @@
             <form @submit.prevent="resetPassword">
               <div class="form-group">
                 <label for="newPassword">Digite sua nova senha</label>
-                <input type="password" v-model="newPassword" class="form-control" placeholder="123456" required>
+                <input type="password" v-model="newPassword" class="form-control" placeholder="********" required>
               </div>
               <div class="form-group">
                 <label for="confirmPassword">Digite sua senha novamente</label>
-                <input type="password" v-model="confirmPassword" class="form-control" placeholder="123456" required>
+                <input type="password" v-model="confirmPassword" class="form-control" placeholder="********" required>
               </div>
               <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary">Confirmar</button>
