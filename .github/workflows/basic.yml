@@ -51,4 +51,4 @@ jobs:
         npm run dev
       env:
         NODE_ENV: development
-         MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
