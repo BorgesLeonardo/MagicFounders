@@ -99,8 +99,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Solicitar redefinição de senha
-router.post('', async (req, res) => {
+/// Solicitar redefinição de senha
+router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;
     
     try {

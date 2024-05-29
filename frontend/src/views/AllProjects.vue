@@ -10,7 +10,6 @@
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0" @submit.prevent="searchProjects">
               <input class="form-control mr-sm-2" v-model="searchQuery" type="search" placeholder="Buscar projetos" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
             </form>
           </li>
         </ul>

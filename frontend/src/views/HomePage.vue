@@ -12,9 +12,7 @@
             <a class="nav-link" href="#" @click.prevent="startProject">Comece seu projeto</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 ml-3" @submit.prevent="searchProjects">
-          <input class="form-control mr-sm-2" v-model="searchQuery" type="search" placeholder="Buscar projetos" aria-label="Search">
-        </form>
+
       </div>
       <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
     </nav>

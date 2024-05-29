@@ -5,12 +5,6 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Comece seu projeto</a>
-          </li>
-          <li class="nav-item">
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Buscar projetos" aria-label="Search">
-            </form>
           </li>
         </ul>
       </div>
