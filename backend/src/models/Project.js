@@ -24,6 +24,7 @@ const ProjectSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
+        enum: ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Natureza', 'Jogos', 'Culinária', 'Podcast', 'Áudio visual', 'Revista'], // Categorias atualizadas
     },
     author: {
         type: String,

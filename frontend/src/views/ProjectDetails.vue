@@ -28,22 +28,28 @@
             <p>{{ project.progress }}% financiado</p>
             <p>{{ project.daysLeft }} dias restantes</p>
             <h4>Meta R$ {{ project.goal }}</h4>
-            <button class="btn btn-primary btn-block" @click="supportProject">Apoiar esse projeto</button>
+            <button class="btn btn-primary btn-block" @click="showSupportPopup = true">Apoiar esse projeto</button>
           </div>
         </div>
       </div>
     </div>
+    <SupportPopup v-if="showSupportPopup" @close="showSupportPopup = false" @update-project="updateProject"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import SupportPopup from './SupportPopup.vue';
 
 export default {
   name: 'ProjectDetails',
+  components: {
+    SupportPopup
+  },
   data() {
     return {
-      project: {}
+      project: {},
+      showSupportPopup: false
     };
   },
   methods: {
@@ -61,8 +67,8 @@ export default {
         console.error('Erro ao buscar detalhes do projeto:', error);
       }
     },
-    supportProject() {
-      // Lógica para apoiar o projeto
+    updateProject(updatedProject) {
+      this.project = updatedProject;
     },
     logout() {
       localStorage.removeItem('token');

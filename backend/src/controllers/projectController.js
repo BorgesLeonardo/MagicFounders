@@ -1,9 +1,16 @@
 const Project = require('../models/Project');
+const qrcode = require('qrcode');
+
+const validCategories = ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Natureza', 'Jogos', 'Culinária', 'Podcast', 'Áudio visual', 'Revista'];
 
 // Função para criar um projeto
 const createProject = async (req, res) => {
     const { title, description, goal, image, deadline, category, author, daysLeft } = req.body;
     const user = req.user.id;
+
+    if (!validCategories.includes(category)) {
+        return res.status(400).json({ error: 'Categoria inválida. As categorias permitidas são: ' + validCategories.join(', ') });
+    }
 
     try {
         const project = new Project({
@@ -105,4 +112,50 @@ const deleteProject = async (req, res) => {
     }
 };
 
-module.exports = { createProject, getProjects, getAllProjects, getProjectById, updateProject, deleteProject };
+// Função para apoiar um projeto
+const supportProject = async (req, res) => {
+    const { projectId, amount } = req.body;
+
+    try {
+        const project = await Project.findById(projectId);
+        if (!project) {
+            return res.status(404).json({ error: 'Projeto não encontrado' });
+        }
+
+        // Gerar código PIX (exemplo fictício, substitua com a implementação real)
+        const pixPayload = `00020126420014BR.GOV.BCB.PIX0114+5521999999995204000053039865405${amount.toFixed(2)}5802BR5913Nome do Recebedor6009Cidade do Recebedor62070503***6304`; // Adapte conforme necessário
+
+        // Gerar QR Code
+        const qrCodeImage = await qrcode.toDataURL(pixPayload);
+
+        res.status(200).json({ qrCodeImage });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Erro ao apoiar projeto' });
+    }
+};
+
+// Função para confirmar o pagamento e atualizar o projeto
+const confirmSupport = async (req, res) => {
+    const { projectId, amount } = req.body;
+
+    try {
+        const project = await Project.findById(projectId);
+        if (!project) {
+            return res.status(404).json({ error: 'Projeto não encontrado' });
+        }
+
+        project.supported += amount;
+        project.supporters += 1;
+        project.progress = (project.supported / project.goal) * 100;
+
+        await project.save();
+
+        res.status(200).json(project);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Erro ao confirmar apoio ao projeto' });
+    }
+};
+
+module.exports = { supportProject, confirmSupport, createProject, getProjects, getAllProjects, getProjectById, updateProject, deleteProject };
