@@ -1,15 +1,20 @@
 <template>
   <div class="project-details-container">
-    <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="#">MagicFounder</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#" @click.prevent="goHome">MagicFounder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
+            <a class="nav-link" href="#" @click.prevent="startProject">Comece seu projeto</a>
           </li>
         </ul>
       </div>
-      <button class="btn logout-button ml-auto" @click="logout">Logout</button>
+      <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
     </nav>
+
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-8">
@@ -73,6 +78,12 @@ export default {
     logout() {
       localStorage.removeItem('token');
       this.$router.push('/');
+    },
+    startProject() {
+      this.$router.push('/create-project');
+    },
+    goHome() {
+      this.$router.push('/home');
     }
   },
   mounted() {
@@ -99,18 +110,18 @@ export default {
 .navbar .navbar-brand {
   color: #17a2b8;
   font-weight: bold;
-  margin-right: 20px;
+  cursor: pointer;
 }
 
 .navbar .nav-link {
   color: #555555;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .navbar .form-control {
   border-radius: 20px;
   padding: 10px;
-  margin-right: 20px;
 }
 
 .logout-button {
@@ -155,12 +166,12 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #5bc0de; /* Verde azulado claro */
+  border-color: #5bc0de; /* Verde azulado claro */
 }
 
 .btn-primary:hover {
-  background-color: #138496;
-  border-color: #138496;
+  background-color: #31b0d5; /* Verde azulado mais escuro */
+  border-color: #31b0d5; /* Verde azulado mais escuro */
 }
 </style>

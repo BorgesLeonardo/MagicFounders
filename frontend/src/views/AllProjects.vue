@@ -37,6 +37,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios';
 
@@ -94,6 +95,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .all-projects-container {
   min-height: 100vh;

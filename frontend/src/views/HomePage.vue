@@ -12,7 +12,6 @@
             <a class="nav-link" href="#" @click.prevent="startProject">Comece seu projeto</a>
           </li>
         </ul>
-
       </div>
       <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
     </nav>
@@ -20,9 +19,25 @@
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="container text-center">
-        <h1 class="display-4">Contos Fantásticos Filipinos</h1>
-        <p class="lead">Inédito no Brasil! São 61 contos de várias etnias filipinas reunidos por Mabel Cook em 1916</p>
-        <button class="btn btn-primary btn-lg" @click="startProject">Conheça o projeto</button>
+        <b-carousel
+          id="carousel-1"
+          style="text-shadow: 1px 1px 2px #333;"
+          controls
+          indicators
+          :interval="4000"
+          img-width="1024"
+          img-height="480"
+        >
+          <b-carousel-slide
+            v-for="(project, index) in featuredProjects.slice(0, 5)"
+            :key="index"
+            :caption="project.title"
+            :text="project.description"
+          >
+            <img :src="project.image" class="d-block w-100" alt="Project Image" />
+            <button class="btn btn-primary btn-lg" @click="viewProject(project._id)">Conheça o projeto</button>
+          </b-carousel-slide>
+        </b-carousel>
       </div>
     </section>
 
@@ -53,9 +68,14 @@
 
 <script>
 import axios from 'axios';
+import { BCarousel, BCarouselSlide } from 'bootstrap-vue-3';
 
 export default {
   name: 'HomePage',
+  components: {
+    BCarousel,
+    BCarouselSlide
+  },
   data() {
     return {
       featuredProjects: [],
@@ -72,6 +92,7 @@ export default {
           }
         });
         this.featuredProjects = response.data;
+        console.log(this.featuredProjects); // Verificar os dados recebidos
       } catch (error) {
         console.error('Erro ao buscar projetos em destaque:', error);
       }
@@ -166,8 +187,6 @@ export default {
 
 /* Hero Section */
 .hero-section {
-  background: url('https://via.placeholder.com/1920x600') no-repeat center center;
-  background-size: cover;
   padding: 100px 0;
   color: white;
   text-align: center;
@@ -210,12 +229,12 @@ h3 {
 }
 
 .btn-primary {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #5bc0de; /* Verde azulado claro */
+  border-color: #5bc0de; /* Verde azulado claro */
 }
 
 .btn-primary:hover {
-  background-color: #138496;
-  border-color: #138496;
+  background-color: #31b0d5; /* Verde azulado mais escuro */
+  border-color: #31b0d5; /* Verde azulado mais escuro */
 }
 </style>

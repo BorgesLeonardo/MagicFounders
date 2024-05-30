@@ -1,36 +1,32 @@
 <template>
-  <div class="container reset-password-container">
-    <div class="row justify-content-center align-items-center min-vh-100">
-      <div class="col-12">
-        <div class="card reset-password-card">
-          <div class="card-body">
-            <h3 class="card-title text-center">Redefinir Senha</h3>
-            <form @submit.prevent="resetPassword">
-              <div class="form-group">
-                <label for="newPassword">Digite sua nova senha</label>
-                <input type="password" v-model="newPassword" class="form-control" placeholder="********" required>
-              </div>
-              <div class="form-group">
-                <label for="confirmPassword">Digite sua senha novamente</label>
-                <input type="password" v-model="confirmPassword" class="form-control" placeholder="********" required>
-              </div>
-              <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary">Confirmar</button>
-              </div>
-            </form>
-          </div>
-        </div>
+  <AuthLayout>
+    <h3 class="card-title text-center">Redefinir Senha</h3>
+    <form @submit.prevent="resetPassword">
+      <div class="form-group">
+        <label for="newPassword">Digite sua nova senha</label>
+        <input type="password" v-model="newPassword" class="form-control" placeholder="********" required>
       </div>
-    </div>
-  </div>
+      <div class="form-group">
+        <label for="confirmPassword">Digite sua senha novamente</label>
+        <input type="password" v-model="confirmPassword" class="form-control" placeholder="********" required>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
+      </div>
+    </form>
+  </AuthLayout>
 </template>
 
 <script>
 import axios from 'axios';
+import AuthLayout from '../components/AuthLayout.vue';
 
 export default {
   name: 'ResetPassword',
   props: ['token'],
+  components: {
+    AuthLayout
+  },
   data() {
     return {
       newPassword: '',
@@ -48,12 +44,9 @@ export default {
           token: this.token,
           newPassword: this.newPassword
         });
-        console.log('Senha redefinida com sucesso');
         alert('Senha redefinida com sucesso!');
-        // Redirecionar para a página de login após redefinir a senha
         this.$router.push('/');
       } catch (error) {
-        console.error('Erro ao redefinir a senha:', error);
         alert('Erro ao redefinir a senha. Verifique os dados e tente novamente.');
       }
     }
@@ -62,36 +55,19 @@ export default {
 </script>
 
 <style scoped>
-.reset-password-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.reset-password-card {
-  width: 400px; /* Ajuste aqui para a largura desejada */
-  border-radius: 10px;
-  padding: 40px;
-  border: none;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: auto;
-}
-
 .card-title {
   margin-bottom: 30px;
   color: #17a2b8;
 }
 
 .btn-primary {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #5bc0de; /* Verde azulado claro */
+  border-color: #5bc0de; /* Verde azulado claro */
 }
 
 .btn-primary:hover {
-  background-color: #138496;
-  border-color: #138496;
+  background-color: #31b0d5; /* Verde azulado mais escuro */
+  border-color: #31b0d5; /* Verde azulado mais escuro */
 }
 
 .form-control {
