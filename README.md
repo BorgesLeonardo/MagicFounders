@@ -60,7 +60,14 @@ Este projeto segue uma arquitetura de três camadas:
   - Seguir boas práticas de desenvolvimento de software, como princípios SOLID, DRY (Don't Repeat Yourself) e KISS (Keep It Simple, Stupid).
 
 ## Instalação
-1. **Não se aplica ainda.** 
+1. Backend - NPM INSTALL DEV
+2. FrontEnd- NPM INSTALL SERVE 
 
 ## Uso
 1. **Não se aplica ainda.** 
+
+## Autores
+ - Alexandre Tessaro Viera
+ - Leonardo Pereira Borges
+ - Richard Schmitz Riedo
+
