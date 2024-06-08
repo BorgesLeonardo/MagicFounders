@@ -37,7 +37,8 @@ jobs:
           curl -sSLo ./.sonar/scanner/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-windows.zip
           unzip ./.sonar/scanner/sonar-scanner-cli.zip -d ./.sonar/scanner/
       - name: Add SonarScanner to PATH
-        run: echo "::add-path::$(pwd)/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin"
+        run: |
+          echo "$(pwd)/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin" >> $GITHUB_PATH
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
