@@ -13,7 +13,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Você pode ajustar para a versão que está usando
+          node-version: '16'  # Ajuste para a versão que está usando
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -36,12 +36,13 @@ jobs:
           mkdir -p ./.sonar/scanner
           curl -sSLo ./.sonar/scanner/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-windows.zip
           unzip ./.sonar/scanner/sonar-scanner-cli.zip -d ./.sonar/scanner/
+      - name: Add SonarScanner to PATH
+        run: echo "::add-path::$(pwd)/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_SCANNER_OPTS: "-Xmx1024m"
-          PATH: "${{ github.workspace }}/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin:${PATH}"
         run: |
           cd backend  # Navega até o diretório backend onde está o código fonte
           sonar-scanner \
@@ -52,4 +53,3 @@ jobs:
           -Dsonar.login="${{ secrets.SONAR_TOKEN }}"
           npm install  # Instala as dependências
           npm run build
-
