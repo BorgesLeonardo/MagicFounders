@@ -1,56 +1,32 @@
-name: SonarCloud
+name: Build
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
-    name: Build and analyze
-    runs-on: windows-latest
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'  # Ajuste para a versão que está usando
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v3
-        with:
-          path: ./.sonar/scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      - name: Install dependencies
         run: |
-          mkdir -p ./.sonar/scanner
-          curl -sSLo ./.sonar/scanner/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-windows.zip
-          unzip ./.sonar/scanner/sonar-scanner-cli.zip -d ./.sonar/scanner/
-      - name: Add SonarScanner to PATH
+          cd backend
+          npm install
+      - name: Build project
         run: |
-          echo "$(pwd)/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin" >> $GITHUB_ENV
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_SCANNER_OPTS: "-Xmx1024m"
-        run: |
-          cd backend  # Navega até o diretório backend onde está o código fonte
-          sonar-scanner \
-          -Dsonar.projectKey="crowdfunding_magicfounders" \
-          -Dsonar.organization="crowdfunding" \
-          -Dsonar.sources=. \
-          -Dsonar.host.url="https://sonarcloud.io" \
-          -Dsonar.login="${{ secrets.SONAR_TOKEN }}"
-          npm install  # Instala as dependências
+          cd backend
           npm run build
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
