@@ -38,7 +38,7 @@ jobs:
           unzip ./.sonar/scanner/sonar-scanner-cli.zip -d ./.sonar/scanner/
       - name: Add SonarScanner to PATH
         run: |
-          echo "$(pwd)/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin" >> $GITHUB_PATH
+          echo "$(pwd)/.sonar/scanner/sonar-scanner-4.6.2.2472-windows/bin" >> $GITHUB_ENV
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
