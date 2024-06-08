@@ -1,39 +1,20 @@
-name: SonarCloud
+name: Build
 on:
   push:
     branches:
-      - main  # ou a branch principal do seu projeto
-
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
         with:
-          java-version: '11'
-
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-
-      - name: Install SonarCloud Scanner
-        run: |
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
-          unzip sonar-scanner.zip -d $HOME/.sonar/
-          export PATH="$HOME/.sonar/sonar-scanner-4.6.2.2472-linux/bin:$PATH"
-
-      - name: Run SonarCloud Scan
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.organization=<your_organization_key> \
-            -Dsonar.projectKey=<your_project_key> \
-            -Dsonar.sources=. \
-            -Dsonar.host.url=https://sonarcloud.io
