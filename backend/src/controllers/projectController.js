@@ -1,11 +1,11 @@
 const Project = require('../models/Project');
 const qrcode = require('qrcode');
 
-const validCategories = ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Natureza', 'Jogos', 'Culinária', 'Podcast', 'Áudio visual', 'Revista'];
+const validCategories = ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Natureza', 'Jogos', 'Culinária', 'Podcast', 'Áudio visual', 'Revista', 'Outros'];
 
 // Função para criar um projeto
 const createProject = async (req, res) => {
-    const { title, description, goal, image, deadline, category, author, daysLeft } = req.body;
+    const { title, description, goal, image, deadline, category, author, chavePix } = req.body;
     const user = req.user.id;
 
     if (!validCategories.includes(category)) {
@@ -21,8 +21,8 @@ const createProject = async (req, res) => {
             deadline,
             category,
             author,
-            daysLeft,
             creator: user,
+            chavePix,
         });
         await project.save();
         res.status(201).json(project);
@@ -35,11 +35,11 @@ const createProject = async (req, res) => {
 // Função para buscar todos os projetos
 const getAllProjects = async (req, res) => {
     try {
-      const projects = await Project.find();
-      res.status(200).json(projects);
+        const projects = await Project.find();
+        res.status(200).json(projects);
     } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ error: 'Erro ao buscar todos os projetos' });
+        console.error(error.message);
+        res.status(500).json({ error: 'Erro ao buscar todos os projetos' });
     }
 }
 
@@ -70,32 +70,34 @@ const getProjectById = async (req, res) => {
 
 // Função para atualizar um projeto por ID
 const updateProject = async (req, res) => {
-    const { title, author, description, goal, image, deadline, category, daysLeft, supporters, supported, progress, } = req.body;
     try {
-        const project = await Project.findById(req.params.id);
-        if (!project) {
-            return res.status(404).json({ error: 'Projeto não encontrado' });
-        }
-
-        project.title = title || project.title;
-        project.author = author || project.author;
-        project.description = description || project.description;
-        project.goal = goal || project.goal;
-        project.image = image || project.image;
-        project.deadline = deadline || project.deadline;
-        project.category = category || project.category;
-        project.daysLeft = daysLeft || project.daysLeft;
-        project.progress = progress || project.progress;
-        project.supported = supported || project.supported;
-        project.supporters = supporters || project.supporters;
-
-        await project.save();
-        res.status(200).json(project);
+      const project = await Project.findById(req.params.id);
+      if (!project) {
+        return res.status(404).json({ error: 'Projeto não encontrado' });
+      }
+  
+      // Verifica se o usuário é o criador do projeto
+      if (project.creator.toString() !== req.user.id) {
+        return res.status(401).json({ error: 'Você não tem permissão para atualizar este projeto' });
+      }
+  
+      // Atualiza os detalhes do projeto
+      const { title, description, goal, image, deadline, category, author } = req.body;
+      project.title = title || project.title;
+      project.description = description || project.description;
+      project.goal = goal || project.goal;
+      project.image = image || project.image;
+      project.deadline = deadline || project.deadline;
+      project.category = category || project.category;
+      project.author = author || project.author;
+  
+      await project.save();
+      res.status(200).json({ message: 'Projeto atualizado com sucesso', project });
     } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ error: 'Erro ao atualizar projeto' });
+      console.error(error.message);
+      res.status(500).json({ error: 'Erro ao atualizar projeto' });
     }
-};
+  };
 
 // Função para deletar um projeto por ID
 const deleteProject = async (req, res) => {
@@ -104,38 +106,39 @@ const deleteProject = async (req, res) => {
         if (!project) {
             return res.status(404).json({ error: 'Projeto não encontrado' });
         }
-        await project.remove();
-        res.status(200).json({ message: 'Projeto removido com sucesso' });
+
+        // Verifica se o usuário é o criador do projeto
+        if (project.creator.toString() !== req.user.id) {
+            return res.status(401).json({ error: 'Você não tem permissão para deletar este projeto' });
+        }
+
+        await Project.findByIdAndDelete(req.params.id);
+        res.status(200).json({ message: 'Projeto deletado com sucesso' });
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: 'Erro ao deletar projeto' });
     }
 };
 
-// Função para apoiar um projeto
 const supportProject = async (req, res) => {
     const { projectId, amount } = req.body;
-
     try {
         const project = await Project.findById(projectId);
         if (!project) {
             return res.status(404).json({ error: 'Projeto não encontrado' });
         }
 
-        // Gerar código PIX (exemplo fictício, substitua com a implementação real)
-        const pixPayload = `00020126420014BR.GOV.BCB.PIX0114+5521999999995204000053039865405${amount.toFixed(2)}5802BR5913Nome do Recebedor6009Cidade do Recebedor62070503***6304`; // Adapte conforme necessário
-
-        // Gerar QR Code
-        const qrCodeImage = await qrcode.toDataURL(pixPayload);
+        // Gerar QR Code usando a chave Pix do projeto
+        const qrCodeData = `00020126330014BR.GOV.BCB.PIX0114${project.chavePix}5204000053039865405${amount.toFixed(2).replace('.', '')}5802BR5913${project.author}6009Cidade${project.title}`;
+        const qrCodeImage = await qrcode.toDataURL(qrCodeData);
 
         res.status(200).json({ qrCodeImage });
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ error: 'Erro ao apoiar projeto' });
+        res.status(500).json({ error: 'Erro ao gerar QR Code' });
     }
 };
 
-// Função para confirmar o pagamento e atualizar o projeto
 const confirmSupport = async (req, res) => {
     const { projectId, amount } = req.body;
 
@@ -154,7 +157,7 @@ const confirmSupport = async (req, res) => {
         res.status(200).json(project);
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ error: 'Erro ao confirmar apoio ao projeto' });
+        res.status500().json({ error: 'Erro ao confirmar apoio ao projeto' });
     }
 };
 

@@ -7,6 +7,7 @@ import HomePage from '../views/HomePage.vue';
 import AllProjects from '../views/AllProjects.vue';
 import ProjectDetails from '../views/ProjectDetails.vue';
 import CreateProject from '../views/CreateProject.vue';
+import EditProject from '../views/EditProject.vue';
 
 const routes = [
   { path: '/', name: 'UserLogin', component: UserLogin },
@@ -17,6 +18,7 @@ const routes = [
   { path: '/projects', name: 'AllProjects', component: AllProjects },
   { path: '/project/:id', name: 'ProjectDetails', component: ProjectDetails },
   { path: '/create-project', name: 'CreateProject', component: CreateProject },
+  { path: '/edit-project/:id', name: 'EditProject', component: EditProject, props: true },
 ];
 
 const router = createRouter({

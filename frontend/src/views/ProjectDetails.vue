@@ -1,27 +1,27 @@
 <template>
   <div class="project-details-container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <a class="navbar-brand" href="#" @click.prevent="goHome">MagicFounder</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="startProject">Comece seu projeto</a>
           </li>
         </ul>
       </div>
-      <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
+      <button class="btn logout-button ml-auto" @click="logout">Logout</button>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container mt-5 pt-5">
       <div class="row">
         <div class="col-md-8">
           <img :src="project.image" class="img-fluid rounded mb-3" alt="Project Image">
           <h1 class="mt-4">{{ project.title }}</h1>
           <p class="text-muted">por {{ project.author }}</p>
           <p>{{ project.description }}</p>
+          <div v-if="isCreator">
+            <button class="btn btn-danger" @click="deleteProject">Deletar Projeto</button>
+            <button class="btn btn-primary ml-2" @click="editProject">Editar Projeto</button>
+          </div>
         </div>
         <div class="col-md-4">
           <div class="support-card shadow-sm p-3 mb-5 bg-white rounded">
@@ -33,7 +33,7 @@
             <p>{{ project.progress }}% financiado</p>
             <p>{{ project.daysLeft }} dias restantes</p>
             <h4>Meta R$ {{ project.goal }}</h4>
-            <button class="btn btn-primary btn-block" @click="showSupportPopup = true">Apoiar esse projeto</button>
+            <button class="btn btn-primary btn-block" @click="showSupportPopup = true" :disabled="isExpired">Apoiar esse projeto</button>
           </div>
         </div>
       </div>
@@ -54,33 +54,60 @@ export default {
   data() {
     return {
       project: {},
-      showSupportPopup: false
+      showSupportPopup: false,
+      isCreator: false,
+      isExpired: false
     };
   },
   methods: {
     async fetchProjectDetails() {
       try {
         const projectId = this.$route.params.id;
-        const token = this.$route.query.token;
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
         const response = await axios.get(`http://localhost:5000/api/projects/${projectId}`, {
           headers: {
             'x-auth-token': token
           }
         });
         this.project = response.data;
+
+        // Verifica se o usuário logado é o criador do projeto
+        this.isCreator = userId === this.project.creator;
+
+        // Verifica se o prazo do projeto expirou
+        const currentDate = new Date();
+        const deadlineDate = new Date(this.project.deadline);
+        this.isExpired = currentDate > deadlineDate;
       } catch (error) {
         console.error('Erro ao buscar detalhes do projeto:', error);
       }
+    },
+    async deleteProject() {
+      try {
+        const projectId = this.$route.params.id;
+        const token = localStorage.getItem('token');
+        await axios.delete(`http://localhost:5000/api/projects/${projectId}`, {
+          headers: {
+            'x-auth-token': token
+          }
+        });
+        alert('Projeto deletado com sucesso!');
+        this.$router.push('/home');
+      } catch (error) {
+        console.error('Erro ao deletar projeto:', error);
+      }
+    },
+    editProject() {
+      this.$router.push(`/edit-project/${this.project._id}`);
     },
     updateProject(updatedProject) {
       this.project = updatedProject;
     },
     logout() {
       localStorage.removeItem('token');
+      localStorage.removeItem('userId');  // Remover o userId do localStorage ao fazer logout
       this.$router.push('/');
-    },
-    startProject() {
-      this.$router.push('/create-project');
     },
     goHome() {
       this.$router.push('/home');
@@ -102,14 +129,20 @@ export default {
 /* Navbar */
 .navbar {
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
   padding: 20px 20px;
+  z-index: 1000; /* Ensure the navbar stays on top */
 }
 
 .navbar .navbar-brand {
   color: #17a2b8;
   font-weight: bold;
+  margin-right: 20px;
   cursor: pointer;
 }
 

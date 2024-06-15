@@ -21,10 +21,7 @@ router.put('/:id', auth, updateProject);
 // Rota para deletar um projeto por ID
 router.delete('/:id', auth, deleteProject);
 
-// Rota para apoiar um projeto
 router.post('/support', auth, supportProject);
-
-// Rota para confirmar o apoio a um projeto
 router.post('/confirm-support', auth, confirmSupport);
 
 // Rota para obter detalhes de um projeto específico

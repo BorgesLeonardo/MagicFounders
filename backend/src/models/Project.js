@@ -24,14 +24,10 @@ const ProjectSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Natureza', 'Jogos', 'Culinária', 'Podcast', 'Áudio visual', 'Revista'], // Categorias atualizadas
+        enum: ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Natureza', 'Jogos', 'Culinária', 'Podcast', 'Áudio visual', 'Revista', 'Outros'],
     },
     author: {
         type: String,
-        required: true,
-    },
-    daysLeft: {
-        type: Number,
         required: true,
     },
     supported: {
@@ -49,6 +45,10 @@ const ProjectSchema = new mongoose.Schema({
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+        required: true,
+    },
+    chavePix: {
+        type: String,
         required: true,
     },
 });

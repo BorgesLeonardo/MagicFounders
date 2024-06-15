@@ -16,31 +16,6 @@
       <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container text-center">
-        <b-carousel
-          id="carousel-1"
-          style="text-shadow: 1px 1px 2px #333;"
-          controls
-          indicators
-          :interval="4000"
-          img-width="1024"
-          img-height="480"
-        >
-          <b-carousel-slide
-            v-for="(project, index) in featuredProjects.slice(0, 5)"
-            :key="index"
-            :caption="project.title"
-            :text="project.description"
-          >
-            <img :src="project.image" class="d-block w-100" alt="Project Image" />
-            <button class="btn btn-primary btn-lg" @click="viewProject(project._id)">Conheça o projeto</button>
-          </b-carousel-slide>
-        </b-carousel>
-      </div>
-    </section>
-
     <!-- Featured Projects Section -->
     <div class="container mt-5">
       <h3 class="text-center">Projetos em destaque</h3>
@@ -68,14 +43,9 @@
 
 <script>
 import axios from 'axios';
-import { BCarousel, BCarouselSlide } from 'bootstrap-vue-3';
 
 export default {
   name: 'HomePage',
-  components: {
-    BCarousel,
-    BCarouselSlide
-  },
   data() {
     return {
       featuredProjects: [],
@@ -185,28 +155,6 @@ export default {
   margin-left: auto;
 }
 
-/* Hero Section */
-.hero-section {
-  padding: 100px 0;
-  color: white;
-  text-align: center;
-}
-
-.hero-section .container {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 50px;
-  border-radius: 10px;
-}
-
-.hero-section h1 {
-  font-size: 2.5rem;
-}
-
-.hero-section p {
-  font-size: 1.25rem;
-}
-
-/* Container */
 .container {
   padding-top: 50px;
   text-align: center;
