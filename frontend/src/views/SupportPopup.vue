@@ -4,8 +4,8 @@
       <h3 class="text-center">Apoiar Projeto</h3>
       <input type="number" v-model="amount" @input="validateAmount" placeholder="Digite o valor" class="form-control my-3 no-arrows" />
       <div class="text-center">
-        <button class="btn btn-primary my-2" @click="generateQRCode" :disabled="!amount || isGenerating">Gerar QR Code</button>
-        <button class="btn btn-secondary my-2" @click="$emit('close')">Voltar</button>
+        <button class="btn btn-primary my-2 mr-2" @click="generateQRCode" :disabled="!amount || isGenerating">Gerar QR Code</button>
+        <button class="btn btn-secondary my-2 ml-2" @click="$emit('close')">Voltar</button>
       </div>
       <div v-if="qrCodeImage" class="text-center mt-3">
         <img :src="qrCodeImage" alt="QR Code" class="img-fluid mb-3" />
@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   props: {
     projectId: {
@@ -28,30 +26,42 @@ export default {
   data() {
     return {
       amount: 0,
-      qrCodeImage: null
+      qrCodeImage: null,
+      isGenerating: false
     };
   },
   methods: {
-    async supportProject() {
+    async generateQRCode() {
+      console.log('Gerando QR Code...');
+      this.isGenerating = true;
       try {
-        const response = await axios.post('/api/projects/support', {
+        const response = await this.$http.post('/api/projects/support', {
           projectId: this.projectId,
           amount: this.amount
         });
+        console.log('Resposta do servidor:', response.data);
         this.qrCodeImage = response.data.qrCodeImage;
       } catch (error) {
         console.error('Erro ao gerar QR Code', error);
+      } finally {
+        this.isGenerating = false;
       }
     },
     async confirmSupport() {
       try {
-        await axios.post('/api/projects/confirm-support', {
+        await this.$http.post('/api/projects/confirm-support', {
           projectId: this.projectId,
           amount: this.amount
         });
         alert('Apoio confirmado com sucesso!');
+        this.$emit('update-project');
       } catch (error) {
         console.error('Erro ao confirmar apoio', error);
+      }
+    },
+    validateAmount() {
+      if (this.amount < 0) {
+        this.amount = 0;
       }
     }
   }
@@ -98,13 +108,13 @@ export default {
 }
 
 .btn-primary {
-  background-color: #5bc0de; /* Verde azulado claro */
-  border-color: #5bc0de; /* Verde azulado claro */
+  background-color: #5bc0de;
+  border-color: #5bc0de;
 }
 
 .btn-primary:hover {
-  background-color: #31b0d5; /* Verde azulado mais escuro */
-  border-color: #31b0d5; /* Verde azulado mais escuro */
+  background-color: #31b0d5;
+  border-color: #31b0d5;
 }
 
 .btn-secondary {
@@ -150,5 +160,13 @@ export default {
 
 .mb-4 {
   margin-bottom: 1.5rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
 }
 </style>

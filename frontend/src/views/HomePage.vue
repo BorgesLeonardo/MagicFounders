@@ -9,11 +9,16 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="startProject">Comece seu projeto</a>
+            <a class="nav-link start-project-btn" href="#" @click.prevent="startProject">
+              <i class="fas fa-plus-circle"></i> Comece seu projeto
+            </a>
           </li>
         </ul>
       </div>
-      <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
+      <div class="ml-auto d-flex align-items-center">
+        <button class="btn btn-outline-danger mr-4" @click="logout">Logout</button>
+        <router-link class="btn btn-outline-info ml-3" to="/profile">Perfil</router-link>
+      </div>
     </nav>
 
     <!-- Featured Projects Section -->
@@ -184,5 +189,22 @@ h3 {
 .btn-primary:hover {
   background-color: #31b0d5; /* Verde azulado mais escuro */
   border-color: #31b0d5; /* Verde azulado mais escuro */
+}
+
+/* Enhancements for the 'Comece seu projeto' button */
+.start-project-btn {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #5bc0de;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.start-project-btn i {
+  margin-right: 5px;
+}
+
+.start-project-btn:hover {
+  color: #31b0d5;
+  transform: scale(1.1);
 }
 </style>

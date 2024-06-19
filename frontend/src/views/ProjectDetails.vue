@@ -17,28 +17,28 @@
           <img :src="project.image" class="img-fluid rounded mb-3" alt="Project Image">
           <h1 class="mt-4">{{ project.title }}</h1>
           <p class="text-muted">por {{ project.author }}</p>
-          <p>{{ project.description }}</p>
+          <p v-html="project.description"></p>
           <div v-if="isCreator">
-            <button class="btn btn-danger" @click="deleteProject">Deletar Projeto</button>
-            <button class="btn btn-primary ml-2" @click="editProject">Editar Projeto</button>
+            <button class="btn btn-danger mr-3" @click="deleteProject">Deletar Projeto</button>
+            <button class="btn btn-primary" @click="editProject">Editar Projeto</button>
           </div>
         </div>
         <div class="col-md-4">
           <div class="support-card shadow-sm p-3 mb-5 bg-white rounded">
-            <h2>R$ {{ project.supported }}</h2>
+            <h2>R$ {{ formattedSupported }}</h2>
             <p>apoiados por {{ project.supporters }} pessoas</p>
             <div class="progress mb-3 rounded-pill">
               <div class="progress-bar rounded-pill" role="progressbar" :style="{ width: project.progress + '%' }" :aria-valuenow="project.progress" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <p>{{ project.progress }}% financiado</p>
+            <p>{{ formattedProgress }}% financiado</p>
             <p>{{ project.daysLeft }} dias restantes</p>
-            <h4>Meta R$ {{ project.goal }}</h4>
-            <button class="btn btn-primary btn-block" @click="showSupportPopup = true" :disabled="isExpired">Apoiar esse projeto</button>
+            <h4>Meta R$ {{ formattedGoal }}</h4>
+            <button v-if="!isExpired" class="btn btn-primary btn-block" @click="showSupportPopup = true">Apoiar esse projeto</button>
           </div>
         </div>
       </div>
     </div>
-    <SupportPopup v-if="showSupportPopup" @close="showSupportPopup = false" @update-project="updateProject"/>
+    <SupportPopup v-if="showSupportPopup" @close="showSupportPopup = false" :projectId="project._id" @update-project="fetchProjectDetails"/>
   </div>
 </template>
 
@@ -56,7 +56,10 @@ export default {
       project: {},
       showSupportPopup: false,
       isCreator: false,
-      isExpired: false
+      isExpired: false,
+      formattedSupported: '0.00',
+      formattedGoal: '0.00',
+      formattedProgress: '0.0'
     };
   },
   methods: {
@@ -71,6 +74,11 @@ export default {
           }
         });
         this.project = response.data;
+
+        // Formatar os valores com duas casas decimais
+        this.formattedSupported = this.project.supported.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        this.formattedGoal = this.project.goal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        this.formattedProgress = this.project.progress.toFixed(1);
 
         // Verifica se o usuário logado é o criador do projeto
         this.isCreator = userId === this.project.creator;
@@ -206,5 +214,9 @@ h1 {
 .btn-primary:hover {
   background-color: #31b0d5; /* Verde azulado mais escuro */
   border-color: #31b0d5; /* Verde azulado mais escuro */
+}
+
+.mr-3 {
+  margin-right: 1rem !important;
 }
 </style>

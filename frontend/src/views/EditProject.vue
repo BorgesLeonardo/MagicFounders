@@ -6,7 +6,7 @@
         <ul class="navbar-nav">
         </ul>
       </div>
-      <button class="btn logout-button ml-auto" @click="logout">Logout</button>
+      <button class="btn btn-outline-danger logout-button ml-auto" @click="logout">Logout</button>
     </nav>
     <div class="container mt-5">
       <h3 class="text-center">Editar Projeto</h3>
@@ -161,5 +161,20 @@ export default {
 .btn-primary:hover {
   background-color: #138496;
   border-color: #138496;
+}
+
+.logout-button {
+  color: #555555;
+  border-color: #555555;
+}
+
+.logout-button:hover {
+  background-color: #dc3545;
+  color: #ffffff;
+  border-color: #dc3545;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 </style>

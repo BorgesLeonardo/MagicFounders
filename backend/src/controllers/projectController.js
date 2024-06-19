@@ -7,30 +7,71 @@ const validCategories = ['Artes', 'Tecnologia', 'Inovação', 'Leitura', 'Nature
 const createProject = async (req, res) => {
     const { title, description, goal, image, deadline, category, author, chavePix } = req.body;
     const user = req.user.id;
-
+  
     if (!validCategories.includes(category)) {
-        return res.status(400).json({ error: 'Categoria inválida. As categorias permitidas são: ' + validCategories.join(', ') });
+      return res.status(400).json({ error: 'Categoria inválida. As categorias permitidas são: ' + validCategories.join(', ') });
     }
-
+  
     try {
-        const project = new Project({
-            title,
-            description,
-            goal,
-            image,
-            deadline,
-            category,
-            author,
-            creator: user,
-            chavePix,
-        });
-        await project.save();
-        res.status(201).json(project);
+      const project = new Project({
+        title,
+        description,
+        goal,
+        image,
+        deadline,
+        category,
+        author,
+        creator: user,
+        chavePix,
+      });
+      await project.save();
+      res.status(201).json(project);
     } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ error: 'Erro ao criar projeto' });
+      console.error(error.message);
+      res.status(500).json({ error: 'Erro ao criar projeto' });
     }
-};
+  };
+  
+  const supportProject = async (req, res) => {
+    const { projectId, amount } = req.body;
+    try {
+      const project = await Project.findById(projectId);
+      if (!project) {
+        return res.status(404).json({ error: 'Projeto não encontrado' });
+      }
+  
+      // Gerar QR Code usando a chave Pix do projeto
+      const qrCodeData = `00020126330014BR.GOV.BCB.PIX0114${project.chavePix}5204000053039865405${amount.toFixed(2).replace('.', '')}5802BR5913${project.author}6009Cidade${project.title}`;
+      const qrCodeImage = await qrcode.toDataURL(qrCodeData);
+  
+      res.status(200).json({ qrCodeImage });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({ error: 'Erro ao gerar QR Code' });
+    }
+  };
+  
+  const confirmSupport = async (req, res) => {
+    const { projectId, amount } = req.body;
+  
+    try {
+      const project = await Project.findById(projectId);
+      if (!project) {
+        return res.status(404).json({ error: 'Projeto não encontrado' });
+      }
+  
+      project.supported += amount;
+      project.supporters += 1;
+      project.progress = (project.supported / project.goal) * 100;
+  
+      await project.save();
+  
+      res.status(200).json(project);
+    } catch (error) {
+      console.error(error.message);
+      res.status500().json({ error: 'Erro ao confirmar apoio ao projeto' });
+    }
+  };
 
 // Função para buscar todos os projetos
 const getAllProjects = async (req, res) => {
@@ -46,7 +87,7 @@ const getAllProjects = async (req, res) => {
 // Função para buscar todos os projetos com limite
 const getProjects = async (req, res) => {
     try {
-        const projects = await Project.find().limit(3);
+        const projects = await Project.find().limit(20);
         res.status(200).json(projects);
     } catch (error) {
         console.error(error.message);
@@ -117,47 +158,6 @@ const deleteProject = async (req, res) => {
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: 'Erro ao deletar projeto' });
-    }
-};
-
-const supportProject = async (req, res) => {
-    const { projectId, amount } = req.body;
-    try {
-        const project = await Project.findById(projectId);
-        if (!project) {
-            return res.status(404).json({ error: 'Projeto não encontrado' });
-        }
-
-        // Gerar QR Code usando a chave Pix do projeto
-        const qrCodeData = `00020126330014BR.GOV.BCB.PIX0114${project.chavePix}5204000053039865405${amount.toFixed(2).replace('.', '')}5802BR5913${project.author}6009Cidade${project.title}`;
-        const qrCodeImage = await qrcode.toDataURL(qrCodeData);
-
-        res.status(200).json({ qrCodeImage });
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ error: 'Erro ao gerar QR Code' });
-    }
-};
-
-const confirmSupport = async (req, res) => {
-    const { projectId, amount } = req.body;
-
-    try {
-        const project = await Project.findById(projectId);
-        if (!project) {
-            return res.status(404).json({ error: 'Projeto não encontrado' });
-        }
-
-        project.supported += amount;
-        project.supporters += 1;
-        project.progress = (project.supported / project.goal) * 100;
-
-        await project.save();
-
-        res.status(200).json(project);
-    } catch (error) {
-        console.error(error.message);
-        res.status500().json({ error: 'Erro ao confirmar apoio ao projeto' });
     }
 };
 
