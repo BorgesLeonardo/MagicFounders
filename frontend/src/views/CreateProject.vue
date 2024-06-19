@@ -1,7 +1,7 @@
 <template>
   <div class="create-project-container">
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="#">MagicFounder</a>
+      <a class="navbar-brand" href="#" @click="goHome">MagicFounder</a>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -24,7 +24,12 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="goal">Meta <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" id="goal" v-model="project.goal" placeholder="Digite a meta do projeto" required>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control no-spinners" id="goal" v-model="project.goal" placeholder="Digite a meta do projeto" step="0.01" min="0" required>
+            </div>
           </div>
           <div class="form-group col-md-6">
             <label for="deadline">Prazo <span class="text-danger">*</span></label>
@@ -38,7 +43,20 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="category">Categoria <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="category" v-model="project.category" placeholder="Digite a categoria do projeto" required>
+            <select class="form-control custom-select" id="category" v-model="project.category" required>
+              <option value="" disabled selected>Selecione uma categoria</option>
+              <option value="Artes">Artes</option>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="Inovação">Inovação</option>
+              <option value="Leitura">Leitura</option>
+              <option value="Natureza">Natureza</option>
+              <option value="Jogos">Jogos</option>
+              <option value="Culinária">Culinária</option>
+              <option value="Podcast">Podcast</option>
+              <option value="Áudio visual">Áudio visual</option>
+              <option value="Revista">Revista</option>
+              <option value="Outros">Outros</option>
+            </select>
           </div>
           <div class="form-group col-md-6">
             <label for="author">Autor <span class="text-danger">*</span></label>
@@ -46,8 +64,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="daysLeft">Dias Restantes <span class="text-danger">*</span></label>
-          <input type="number" class="form-control" id="daysLeft" v-model="project.daysLeft" placeholder="Digite o número de dias restantes" required>
+          <label for="chavePix">Chave Pix <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="chavePix" v-model="project.chavePix" placeholder="Digite a chave Pix" required>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Cadastrar Projeto</button>
       </form>
@@ -70,13 +88,17 @@ export default {
         deadline: '',
         category: '',
         author: '',
-        daysLeft: 0,
+        chavePix: ''
       },
     };
   },
   methods: {
     async submitProject() {
       try {
+        if (this.project.goal < 0) {
+          alert('A meta do projeto não pode ser um valor negativo.');
+          return;
+        }
         const token = localStorage.getItem('token');
         await axios.post('http://localhost:5000/api/projects/create', this.project, {
           headers: {
@@ -93,6 +115,9 @@ export default {
       localStorage.removeItem('token');
       this.$router.push('/');
     },
+    goHome() {
+      this.$router.push('/home');
+    }
   },
 };
 </script>
@@ -117,17 +142,18 @@ export default {
   color: #17a2b8;
   font-weight: bold;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .navbar .nav-link {
   color: #555555;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .navbar .form-control {
   border-radius: 20px;
   padding: 10px;
-  margin-right: 20px;
 }
 
 .logout-button {
@@ -161,13 +187,36 @@ export default {
   margin-bottom: 15px;
 }
 
+.input-group-text {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.custom-select {
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+}
+
 .btn-primary {
   background-color: #17a2b8;
   border-color: #17a2b8;
 }
 
 .btn-primary:hover {
-  background-color: #138496;
-  border-color: #138496;
+  background-color: #31b0d5;
+  border-color: #31b0d5;
+}
+
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinners {
+  -moz-appearance: textfield;
 }
 </style>

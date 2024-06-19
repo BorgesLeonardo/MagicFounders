@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view></router-view>
 </template>
 
 <script>
@@ -9,5 +9,5 @@ export default {
 </script>
 
 <style>
-/* Adicione seus estilos globais aqui, se necessário */
+/* estilos globais */
 </style>

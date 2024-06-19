@@ -1,7 +1,7 @@
 <template>
   <div class="all-projects-container">
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="#">MagicFounder</a>
+      <a class="navbar-brand" href="#" @click.prevent="goHome">MagicFounder</a>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -88,6 +88,9 @@ export default {
     },
     startProject() {
       this.$router.push('/create-project');
+    },
+    goHome() {
+      this.$router.push('/home');
     }
   },
   mounted() {
@@ -116,6 +119,7 @@ export default {
   color: #17a2b8;
   font-weight: bold;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .navbar .nav-link {

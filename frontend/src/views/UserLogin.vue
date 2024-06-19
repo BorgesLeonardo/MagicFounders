@@ -50,6 +50,13 @@ export default {
           email: this.email,
           password: this.password
         });
+        const token = response.data.token;
+        const userId = response.data.user.id;
+
+        // Armazena o token e o ID do usuário no localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+
         localStorage.setItem('token', response.data.token);
         this.$router.push('/home');
       } catch (error) {

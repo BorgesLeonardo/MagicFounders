@@ -10,6 +10,19 @@ const app = createApp(App);
 
 app.use(router);
 app.use(BootstrapVue3);
+
+axios.defaults.baseURL = 'http://localhost:5000'; // Adicione esta linha
+
+axios.interceptors.request.use(config => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers['x-auth-token'] = token;
+  }
+  return config;
+}, error => {
+  return Promise.reject(error);
+});
+
 app.config.globalProperties.$http = axios;
 
 app.mount('#app');

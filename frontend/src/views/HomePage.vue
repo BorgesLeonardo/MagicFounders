@@ -9,37 +9,17 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="startProject">Comece seu projeto</a>
+            <a class="nav-link start-project-btn" href="#" @click.prevent="startProject">
+              <i class="fas fa-plus-circle"></i> Comece seu projeto
+            </a>
           </li>
         </ul>
       </div>
-      <button class="btn btn-outline-danger ml-auto" @click="logout">Logout</button>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container text-center">
-        <b-carousel
-          id="carousel-1"
-          style="text-shadow: 1px 1px 2px #333;"
-          controls
-          indicators
-          :interval="4000"
-          img-width="1024"
-          img-height="480"
-        >
-          <b-carousel-slide
-            v-for="(project, index) in featuredProjects.slice(0, 5)"
-            :key="index"
-            :caption="project.title"
-            :text="project.description"
-          >
-            <img :src="project.image" class="d-block w-100" alt="Project Image" />
-            <button class="btn btn-primary btn-lg" @click="viewProject(project._id)">Conheça o projeto</button>
-          </b-carousel-slide>
-        </b-carousel>
+      <div class="ml-auto d-flex align-items-center">
+        <button class="btn btn-outline-danger mr-4" @click="logout">Logout</button>
+        <router-link class="btn btn-outline-info ml-3" to="/profile">Perfil</router-link>
       </div>
-    </section>
+    </nav>
 
     <!-- Featured Projects Section -->
     <div class="container mt-5">
@@ -68,14 +48,9 @@
 
 <script>
 import axios from 'axios';
-import { BCarousel, BCarouselSlide } from 'bootstrap-vue-3';
 
 export default {
   name: 'HomePage',
-  components: {
-    BCarousel,
-    BCarouselSlide
-  },
   data() {
     return {
       featuredProjects: [],
@@ -185,28 +160,6 @@ export default {
   margin-left: auto;
 }
 
-/* Hero Section */
-.hero-section {
-  padding: 100px 0;
-  color: white;
-  text-align: center;
-}
-
-.hero-section .container {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 50px;
-  border-radius: 10px;
-}
-
-.hero-section h1 {
-  font-size: 2.5rem;
-}
-
-.hero-section p {
-  font-size: 1.25rem;
-}
-
-/* Container */
 .container {
   padding-top: 50px;
   text-align: center;
@@ -236,5 +189,22 @@ h3 {
 .btn-primary:hover {
   background-color: #31b0d5; /* Verde azulado mais escuro */
   border-color: #31b0d5; /* Verde azulado mais escuro */
+}
+
+/* Enhancements for the 'Comece seu projeto' button */
+.start-project-btn {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #5bc0de;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.start-project-btn i {
+  margin-right: 5px;
+}
+
+.start-project-btn:hover {
+  color: #31b0d5;
+  transform: scale(1.1);
 }
 </style>
