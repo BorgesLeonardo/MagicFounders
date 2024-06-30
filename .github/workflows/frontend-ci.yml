@@ -30,7 +30,7 @@ jobs:
       working-directory: ./frontend
 
     - name: Run frontend
-      run: npm run server
+      run: npm run serve
       working-directory: ./frontend
 
     - name: Wait for server to start
