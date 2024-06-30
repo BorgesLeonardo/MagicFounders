@@ -47,8 +47,6 @@ jobs:
       run: npm run build
       working-directory: ./backend
 
-    - name: Deploy backend
-      if: github.ref == 'refs/heads/main'
-      run: |
-        echo "Deploy backend here"
+    - name: Run backend
+      run: npm run dev
       working-directory: ./backend
