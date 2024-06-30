@@ -3,10 +3,10 @@ name: Backend CI/CD
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -31,6 +31,11 @@ jobs:
       run: npm install
       working-directory: ./backend
 
+    - name: Make cross-env executable
+      run: |
+        sudo chmod +x ./node_modules/.bin/cross-env
+      working-directory: ./backend
+
     - name: Run tests
       env:
         MONGO_URI: mongodb://localhost:27017/test
@@ -44,5 +49,6 @@ jobs:
 
     - name: Deploy backend
       if: github.ref == 'refs/heads/main'
-      run: npm run dev
+      run: |
+        echo "Deploy backend here"
       working-directory: ./backend
