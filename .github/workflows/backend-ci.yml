@@ -47,6 +47,16 @@ jobs:
       run: npm run build
       working-directory: ./backend
 
-    - name: Run backend
-      run: npm run dev
+    - name: Run backend 
+      run: npm run dev &
       working-directory: ./backend
+
+    - name: Wait for server to start
+      run: sleep 10
+
+    - name: Check if backend is running
+      run: curl --fail http://localhost:3000/health || exit 1
+
+    - name: Stop backend server
+      run: |
+        pkill -f "node"
