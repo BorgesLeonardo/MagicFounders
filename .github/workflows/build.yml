@@ -17,14 +17,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'  # Ajuste para a versão que está usando
-      - name: Install dependencies
-        run: |
-          cd backend
-          npm install
-      - name: Build project
-        run: |
-          cd backend
-          npm run build
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
