@@ -3,7 +3,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const User = require('../models/User'); // Corrigido o caminho
+const User = require('../models/User'); // Certifique-se de que o caminho está correto
+const auth = require('../middleware/auth'); // Middleware de autenticação
 const router = express.Router();
 
 // Registrar usuário
@@ -84,6 +85,23 @@ router.post('/login', async (req, res) => {
         res.status(500).send('Erro no servidor');
     }
 });
+
+// Deletar usuário
+router.delete('/delete', auth, async (req, res) => {
+    try {
+      const user = await User.findById(req.user.id);
+      if (!user) {
+        return res.status(404).json({ message: 'Usuário não encontrado' });
+      }
+  
+      await User.findByIdAndDelete(req.user.id);
+  
+      res.status(200).json({ message: 'Usuário deletado com sucesso' });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Erro ao deletar usuário' });
+    }
+  });
 
 // Configuração do Nodemailer
 const transporter = nodemailer.createTransport({
