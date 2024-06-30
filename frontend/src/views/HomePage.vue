@@ -17,7 +17,6 @@
       </div>
       <div class="ml-auto d-flex align-items-center">
         <button class="btn btn-outline-danger mr-4" @click="logout">Logout</button>
-        <router-link class="btn btn-outline-info ml-3" to="/profile">Perfil</router-link>
       </div>
     </nav>
 
