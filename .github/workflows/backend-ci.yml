@@ -31,9 +31,9 @@ jobs:
       run: npm install
       working-directory: ./backend
 
-    - name: Make cross-env executable
+    - name: Make node_modules/.bin executables
       run: |
-        sudo chmod +x ./node_modules/.bin/cross-env
+        sudo chmod -R +x ./node_modules/.bin
       working-directory: ./backend
 
     - name: Run tests
