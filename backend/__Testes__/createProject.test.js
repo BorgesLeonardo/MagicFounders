@@ -2,7 +2,7 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const app = require('../src/server');  // Certifique-se de importar o app aqui
+const app = require('../src/server');
 const User = require('../src/models/User');
 const Project = require('../src/models/Project');
 const bcrypt = require('bcryptjs');
@@ -13,18 +13,12 @@ describe('Create Project API', () => {
   let token;
 
   beforeAll(async () => {
-    jest.setTimeout(30000); // Increase timeout to 30 seconds
     mongoServer = await MongoMemoryServer.create();
     const mongoUri = mongoServer.getUri();
-
-    // Definir a URI do MongoDB dinamicamente
-    process.env.MONGO_URI = mongoUri;
-
-    // Fechar conexão existente antes de abrir uma nova
+    
     await mongoose.disconnect();
     await mongoose.connect(mongoUri);
 
-    // Cria um usuário para testes de criação de projeto
     const user = new User({
       name: 'Project User',
       email: 'projectuser@example.com',
@@ -68,7 +62,6 @@ describe('Create Project API', () => {
         .set('x-auth-token', token)
         .send({
           title: 'Incomplete Project'
-          // Missing other required fields
         });
 
       expect(res.statusCode).toEqual(400);

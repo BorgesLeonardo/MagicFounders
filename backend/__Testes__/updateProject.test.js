@@ -2,7 +2,7 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const app = require('../src/server');  // Certifique-se de importar o app aqui
+const app = require('../src/server');
 const User = require('../src/models/User');
 const Project = require('../src/models/Project');
 const bcrypt = require('bcryptjs');
@@ -14,18 +14,12 @@ describe('Update Project API', () => {
   let projectId;
 
   beforeAll(async () => {
-    jest.setTimeout(30000); // Increase timeout to 30 seconds
     mongoServer = await MongoMemoryServer.create();
     const mongoUri = mongoServer.getUri();
-
-    // Definir a URI do MongoDB dinamicamente
-    process.env.MONGO_URI = mongoUri;
-
-    // Fechar conexão existente antes de abrir uma nova
+    
     await mongoose.disconnect();
     await mongoose.connect(mongoUri);
 
-    // Cria um usuário para testes de atualização de projeto
     const user = new User({
       name: 'Project User',
       email: 'projectuser@example.com',
@@ -37,7 +31,6 @@ describe('Update Project API', () => {
       expiresIn: '1h',
     });
 
-    // Cria um projeto para ser atualizado
     const project = new Project({
       title: 'Old Project',
       description: 'This is an old project',
@@ -47,7 +40,7 @@ describe('Update Project API', () => {
       category: 'Tecnologia',
       author: 'Project User',
       chavePix: '1234567890',
-      creator: user._id // Adicionando o campo creator
+      creator: user._id
     });
     await project.save();
 
@@ -72,8 +65,7 @@ describe('Update Project API', () => {
           deadline: '2025-12-31',
           category: 'Outros',
           author: 'Updated User',
-          chavePix: '0987654321',
-          creator: 'Updated User' // Adicionando o campo creator
+          chavePix: '0987654321'
         });
 
       expect(res.statusCode).toEqual(200);
@@ -87,10 +79,9 @@ describe('Update Project API', () => {
         .set('x-auth-token', token)
         .send({
           title: 'Incomplete Project'
-          // Missing other required fields
         });
 
-      console.log('Resposta recebida:', res.body); // Adicione este log
+      console.log('Resposta recebida:', res.body);
 
       expect(res.statusCode).toEqual(400);
       expect(res.body).toHaveProperty('message', 'Todos os campos são obrigatórios');

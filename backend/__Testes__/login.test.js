@@ -2,7 +2,7 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const app = require('../src/server');  // Certifique-se de importar o app aqui
+const app = require('../src/server');
 const User = require('../src/models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -13,18 +13,12 @@ describe('Login API', () => {
   let userId;
 
   beforeAll(async () => {
-    jest.setTimeout(30000); // Increase timeout to 30 seconds
     mongoServer = await MongoMemoryServer.create();
     const mongoUri = mongoServer.getUri();
-
-    // Definir a URI do MongoDB dinamicamente
-    process.env.MONGO_URI = mongoUri;
-
-    // Fechar conexão existente antes de abrir uma nova
+    
     await mongoose.disconnect();
     await mongoose.connect(mongoUri);
 
-    // Cria um usuário para testes de login
     const user = new User({
       name: 'Login User',
       email: 'loginuser@example.com',
