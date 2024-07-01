@@ -41,7 +41,7 @@ jobs:
       env:
         MONGO_URI: mongodb://localhost:27017/test
         JWT_SECRET: your_jwt_secret
-      run: npm test
+      run: npm test -- --detectOpenHandles
       working-directory: ./backend
 
     - name: Build backend
@@ -84,4 +84,4 @@ jobs:
       
     - name: Stop frontend server
       run: |
-        pkill -f "node"
+        pkill -
