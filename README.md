@@ -9,6 +9,7 @@ MagicFounders é uma aplicação web crowdfunding que busca conectar empresas e 
 - **Gestão de Projetos:** Criação, atualização, exclusão e doação de projetos.
 - **Autenticação de Usuários:** Registro e login para manter suas tarefas sincronizadas e seguras.
 - **Exploração de Projetos:** Descubra e explore diversos projetos criados por outros usuários.
+- **Pagamento** Apoie financeiramente seus projetos favoritos através do QRCode via PIX. 
 
 ## Tecnologias Utilizadas
 
