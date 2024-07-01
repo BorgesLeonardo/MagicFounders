@@ -1,4 +1,3 @@
-// tests/login.test.js
 const request = require('supertest');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
@@ -31,12 +30,12 @@ describe('Login API', () => {
     });
 
     userId = user.id;
-  });
+  }, 30000); // Aumentar o tempo limite para 30 segundos
 
   afterAll(async () => {
     await mongoose.disconnect();
     await mongoServer.stop();
-  });
+  }, 30000); // Aumentar o tempo limite para 30 segundos
 
   describe('POST /api/auth/login', () => {
     it('should login a user', async () => {

@@ -1,4 +1,3 @@
-// tests/updateProject.test.js
 const request = require('supertest');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
@@ -45,12 +44,12 @@ describe('Update Project API', () => {
     await project.save();
 
     projectId = project._id;
-  });
+  }, 30000); // Aumentar o tempo limite para 30 segundos
 
   afterAll(async () => {
     await mongoose.disconnect();
     await mongoServer.stop();
-  });
+  }, 30000); // Aumentar o tempo limite para 30 segundos
 
   describe('PUT /api/projects/:id', () => {
     it('should update an existing project', async () => {

@@ -42,12 +42,12 @@ describe('Delete Project API', () => {
     anotherUserToken = jwt.sign({ user: { id: anotherUser.id } }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
-  });
+  }, 30000); // Aumentar o tempo limite para 30 segundos
 
   afterAll(async () => {
     await mongoose.disconnect();
     await mongoServer.stop();
-  });
+  }, 30000); // Aumentar o tempo limite para 30 segundos
 
   const createProject = async (userId) => {
     const project = new Project({
