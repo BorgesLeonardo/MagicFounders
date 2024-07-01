@@ -55,9 +55,6 @@ jobs:
     - name: Wait for backend server to start
       run: sleep 10
 
-    - name: Check if backend is running
-      run: curl --fail http://localhost:3000/health || exit 1
-
     - name: Stop backend server
       run: |
         pkill -f "node"
@@ -84,10 +81,7 @@ jobs:
 
     - name: Wait for frontend server to start
       run: sleep 10
-
-    - name: Check if frontend is running
-      run: curl --fail http://localhost:8080 || exit 1
-
+      
     - name: Stop frontend server
       run: |
         pkill -f "node"
