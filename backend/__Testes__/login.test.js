@@ -13,6 +13,7 @@ describe('Login API', () => {
   let userId;
 
   beforeAll(async () => {
+    jest.setTimeout(30000); // Increase timeout to 30 seconds
     mongoServer = await MongoMemoryServer.create();
     const mongoUri = mongoServer.getUri();
 

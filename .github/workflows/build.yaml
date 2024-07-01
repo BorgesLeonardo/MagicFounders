@@ -84,4 +84,4 @@ jobs:
       
     - name: Stop frontend server
       run: |
-         pkill -f 
+        pkill -f "node"
