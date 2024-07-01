@@ -1,4 +1,4 @@
-name: CI/CD
+name: Backend CI/CD
 
 on:
   push:
@@ -27,21 +27,20 @@ jobs:
       with:
         node-version: '16'
 
-    # Backend steps
-    - name: Install backend dependencies
+    - name: Install dependencies
       run: npm install
       working-directory: ./backend
 
-    - name: Make backend node_modules/.bin executables
+    - name: Make node_modules/.bin executables
       run: |
         sudo chmod -R +x ./node_modules/.bin
       working-directory: ./backend
 
-    - name: Run backend tests
+    - name: Run tests
       env:
         MONGO_URI: mongodb://localhost:27017/test
         JWT_SECRET: your_jwt_secret
-      run: npm test -- --detectOpenHandles
+      run: npm test
       working-directory: ./backend
 
     - name: Build backend
@@ -52,36 +51,12 @@ jobs:
       run: npm run dev &
       working-directory: ./backend
 
-    - name: Wait for backend server to start
+    - name: Wait for server to start
       run: sleep 10
+
+    - name: Check if backend is running
+      run: curl --fail http://localhost:3000/health || exit 1
 
     - name: Stop backend server
-      run: |
-        pkill -f "node"
-
-    # Frontend steps
-    - name: Install frontend dependencies
-      run: npm install
-      working-directory: ./frontend
-
-    - name: Build frontend
-      run: npm run build
-      working-directory: ./frontend
-
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/master'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./frontend/dist
-
-    - name: Start frontend server
-      run: npm run serve &
-      working-directory: ./frontend
-
-    - name: Wait for frontend server to start
-      run: sleep 10
-      
-    - name: Stop frontend server
       run: |
         pkill -f "node"
