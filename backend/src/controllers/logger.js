@@ -5,7 +5,6 @@ const myFormat = printf(({ level, message, timestamp }) => {
   return `${timestamp} [${level.toUpperCase()}]: ${message}`;
 });
 
-// Definindo os níveis de log
 const levels = {
   critical: 0,
   error: 1,
@@ -14,7 +13,6 @@ const levels = {
   debug: 4
 };
 
-// Criando o logger com os níveis definidos
 const logger = createLogger({
   levels,
   format: combine(
@@ -23,11 +21,11 @@ const logger = createLogger({
   ),
   transports: [
     new transports.Console({
-      level: 'debug', // Aqui define o nível de log que aparece no console
+      level: 'debug',
     }),
     new transports.File({
       filename: 'file.log',
-      level: 'debug', // Define o nível de log para o arquivo como 'debug'
+      level: 'debug', 
     })
   ],
 });
