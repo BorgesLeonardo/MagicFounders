@@ -1,0 +1,73 @@
+2024-08-13T00:20:55.472Z [DEBUG]: Requisição recebida para criar projeto com dados: {"title":"teste","description":"teste","goal":1000,"image":"a","deadline":"2024-08-12","category":"","author":"a","chavePix":"pix"}
+2024-08-13T00:20:55.473Z [WARNING]: Categoria inválida: 
+2024-08-13T00:24:34.443Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:24:34.517Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:25:19.498Z [DEBUG]: Requisição recebida para criar projeto com dados: {"title":"adadw","description":"fawf","goal":0,"image":"script(\"oi)\";","deadline":"2024-08-11","category":"Revista","author":"-90","chavePix":"pix"}
+2024-08-13T00:25:19.547Z [INFO]: Projeto criado com sucesso: 66baa7efae9cabf85f9f5825
+2024-08-13T00:25:20.779Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:25:20.845Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:25:38.236Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66baa7efae9cabf85f9f5825
+2024-08-13T00:25:38.269Z [INFO]: Projeto ID: 66baa7efae9cabf85f9f5825 encontrado com sucesso
+2024-08-13T00:25:39.111Z [DEBUG]: Requisição recebida para deletar o projeto ID: 66baa7efae9cabf85f9f5825
+2024-08-13T00:25:39.191Z [INFO]: Projeto ID: 66baa7efae9cabf85f9f5825 deletado com sucesso
+2024-08-13T00:25:40.209Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:25:40.274Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:25:48.289Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66baa0658b4dc40b658f3606
+2024-08-13T00:25:48.321Z [INFO]: Projeto ID: 66baa0658b4dc40b658f3606 encontrado com sucesso
+2024-08-13T00:25:49.147Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66baa0658b4dc40b658f3606
+2024-08-13T00:25:49.178Z [INFO]: Projeto ID: 66baa0658b4dc40b658f3606 encontrado com sucesso
+2024-08-13T00:26:10.475Z [DEBUG]: Requisição recebida para atualizar o projeto ID: 66baa0658b4dc40b658f3606
+2024-08-13T00:26:10.554Z [INFO]: Projeto ID: 66baa0658b4dc40b658f3606 atualizado com sucesso
+2024-08-13T00:26:11.585Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66baa0658b4dc40b658f3606
+2024-08-13T00:26:11.618Z [INFO]: Projeto ID: 66baa0658b4dc40b658f3606 encontrado com sucesso
+2024-08-13T00:26:28.761Z [DEBUG]: Requisição recebida para deletar o projeto ID: 66baa0658b4dc40b658f3606
+2024-08-13T00:26:28.836Z [INFO]: Projeto ID: 66baa0658b4dc40b658f3606 deletado com sucesso
+2024-08-13T00:26:30.730Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:26:30.793Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:29:23.429Z [DEBUG]: Requisição recebida para criar projeto com dados: {"title":"adadw","description":"teste","goal":100,"image":"script(\"oi)\";","deadline":"2024-08-12","category":"","author":"-90","chavePix":"pix"}
+2024-08-13T00:30:17.406Z [DEBUG]: Requisição recebida para criar projeto com dados: {"title":"adadw","description":"teste","goal":100,"image":"script(\"oi)\";","deadline":"2024-08-12","category":"Outros","author":"-90","chavePix":"pix"}
+2024-08-13T00:30:17.408Z [ERROR]: Erro ao criar projeto: author is not defined
+2024-08-13T00:32:59.524Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:32:59.595Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:33:01.534Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66833c3972daf61ca346ceae
+2024-08-13T00:33:01.568Z [INFO]: Projeto ID: 66833c3972daf61ca346ceae encontrado com sucesso
+2024-08-13T00:33:02.899Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:33:02.965Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:33:04.358Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:33:04.392Z [INFO]: Projeto ID: 66ba9e958b4dc40b658f35ff encontrado com sucesso
+2024-08-13T00:33:07.457Z [DEBUG]: Requisição recebida para suporte ao projeto ID: 66ba9e958b4dc40b658f35ff com valor: 1
+2024-08-13T00:33:07.521Z [INFO]: QR Code gerado para projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:33:08.654Z [DEBUG]: Requisição recebida para confirmação de suporte ao projeto ID: 66ba9e958b4dc40b658f35ff com valor: 1
+2024-08-13T00:33:08.841Z [INFO]: Suporte confirmado para projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:33:10.037Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:33:10.070Z [INFO]: Projeto ID: 66ba9e958b4dc40b658f35ff encontrado com sucesso
+2024-08-13T00:35:28.549Z [DEBUG]: Requisição recebida para confirmação de suporte ao projeto ID: 66ba9e958b4dc40b658f35ff com valor: 0
+2024-08-13T00:35:28.630Z [INFO]: Suporte confirmado para projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:35:29.832Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:35:29.864Z [INFO]: Projeto ID: 66ba9e958b4dc40b658f35ff encontrado com sucesso
+2024-08-13T00:37:29.010Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:37:29.080Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:37:29.628Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:37:29.691Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:37:43.584Z [DEBUG]: Requisição recebida para criar projeto com dados: {"title":"adadw","description":"te","goal":100,"image":"script(\"oi)\";","deadline":"2024-08-12","category":"","author":"-90","chavePix":"pix"}
+2024-08-13T00:37:43.586Z [WARNING]: Categoria inválida: 
+2024-08-13T00:39:13.711Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:39:13.784Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:39:14.777Z [DEBUG]: Requisição recebida para buscar o projeto ID: 668328cc2142f3208528792d
+2024-08-13T00:39:14.811Z [INFO]: Projeto ID: 668328cc2142f3208528792d encontrado com sucesso
+2024-08-13T00:39:16.358Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:39:16.422Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:39:17.242Z [DEBUG]: Requisição recebida para buscar o projeto ID: 668328f92142f32085287930
+2024-08-13T00:39:17.274Z [INFO]: Projeto ID: 668328f92142f32085287930 encontrado com sucesso
+2024-08-13T00:39:19.527Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:39:19.592Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:39:21.351Z [DEBUG]: Requisição recebida para buscar o projeto ID: 6685f6474bb02af8d812e661
+2024-08-13T00:39:21.385Z [INFO]: Projeto ID: 6685f6474bb02af8d812e661 encontrado com sucesso
+2024-08-13T00:39:23.431Z [DEBUG]: Requisição recebida para buscar uma lista de projetos limitados
+2024-08-13T00:39:23.506Z [INFO]: Busca por projetos limitada a 20 realizada com sucesso
+2024-08-13T00:39:24.503Z [DEBUG]: Requisição recebida para buscar o projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:39:24.536Z [INFO]: Projeto ID: 66ba9e958b4dc40b658f35ff encontrado com sucesso
+2024-08-13T00:39:25.421Z [DEBUG]: Requisição recebida para deletar o projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:39:25.456Z [CRITICAL]: Erro crítico ao tentar deletar o projeto ID: 66ba9e958b4dc40b658f35ff - Erro crítico: Falha ao tentar deletar o projeto ID: 66ba9e958b4dc40b658f35ff - possível corrupção de dados
+2024-08-13T00:39:27.091Z [DEBUG]: Requisição recebida para deletar o projeto ID: 66ba9e958b4dc40b658f35ff
+2024-08-13T00:39:27.126Z [CRITICAL]: Erro crítico ao tentar deletar o projeto ID: 66ba9e958b4dc40b658f35ff - Erro crítico: Falha ao tentar deletar o projeto ID: 66ba9e958b4dc40b658f35ff - possível corrupção de dados

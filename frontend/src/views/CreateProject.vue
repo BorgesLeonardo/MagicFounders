@@ -43,7 +43,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="category">Categoria <span class="text-danger">*</span></label>
-            <select class="form-control custom-select" id="category" v-model="project.category" required>
+            <select class="form-control custom-select" id="category" v-model="project.category" >
               <option value="" disabled selected>Selecione uma categoria</option>
               <option value="Artes">Artes</option>
               <option value="Tecnologia">Tecnologia</option>
