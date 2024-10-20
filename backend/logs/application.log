@@ -18,3 +18,169 @@
 {"level":"info","message":"Projeto criado com sucesso: 66c0e5b51b1e4206aa820c86","timestamp":"2024-08-17T18:02:29.469Z"}
 {"level":"debug","message":"Requisição recebida para buscar uma lista de projetos limitados","timestamp":"2024-08-17T18:02:31.941Z"}
 {"level":"info","message":"Busca por projetos limitada a 20 realizada com sucesso","timestamp":"2024-08-17T18:02:31.998Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 67154fc3441a2f6e02fe3846","timestamp":"2024-10-20T18:45:23.935Z"}
+{"level":"info","message":"Projeto ID: 67154fc3441a2f6e02fe3846 atualizado com sucesso","timestamp":"2024-10-20T18:45:23.963Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 67154fc3441a2f6e02fe3846","timestamp":"2024-10-20T18:45:23.974Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:45:23.975Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:45:24.157Z"}
+{"level":"info","message":"Projeto criado com sucesso: 67154fc4a4962eb900703efd","timestamp":"2024-10-20T18:45:24.184Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:45:24.194Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:45:24.195Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67154fc4ef95338138fbf916","timestamp":"2024-10-20T18:45:24.205Z"}
+{"level":"info","message":"Projeto ID: 67154fc4ef95338138fbf916 deletado com sucesso","timestamp":"2024-10-20T18:45:24.234Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67154fc4ef95338138fbf91a","timestamp":"2024-10-20T18:45:24.248Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 67154fc4ef95338138fbf91a","timestamp":"2024-10-20T18:45:24.252Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67154fc4ef95338138fbf91d","timestamp":"2024-10-20T18:45:24.257Z"}
+{"level":"warn","message":"Projeto não encontrado: 67154fc4ef95338138fbf91d","timestamp":"2024-10-20T18:45:24.259Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 67154ff58a344006d7e34a34","timestamp":"2024-10-20T18:46:13.931Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67154ff516793b0e0e2e7721","timestamp":"2024-10-20T18:46:13.937Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:46:13.947Z"}
+{"level":"info","message":"Projeto ID: 67154ff58a344006d7e34a34 atualizado com sucesso","timestamp":"2024-10-20T18:46:13.962Z"}
+{"level":"info","message":"Projeto criado com sucesso: 67154ff5ea5172578b75bf8e","timestamp":"2024-10-20T18:46:13.969Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 67154ff58a344006d7e34a34","timestamp":"2024-10-20T18:46:13.970Z"}
+{"level":"info","message":"Projeto ID: 67154ff516793b0e0e2e7721 deletado com sucesso","timestamp":"2024-10-20T18:46:13.972Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:46:13.971Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:46:13.978Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:46:13.979Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67154ff516793b0e0e2e7725","timestamp":"2024-10-20T18:46:13.986Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 67154ff516793b0e0e2e7725","timestamp":"2024-10-20T18:46:13.989Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67154ff516793b0e0e2e7728","timestamp":"2024-10-20T18:46:13.996Z"}
+{"level":"warn","message":"Projeto não encontrado: 67154ff516793b0e0e2e7728","timestamp":"2024-10-20T18:46:13.999Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715503b20fef444f436c0de","timestamp":"2024-10-20T18:47:23.076Z"}
+{"level":"info","message":"Projeto ID: 6715503b20fef444f436c0de atualizado com sucesso","timestamp":"2024-10-20T18:47:23.103Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:47:23.099Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715503b6f4644abfdf518e0","timestamp":"2024-10-20T18:47:23.103Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715503b20fef444f436c0de","timestamp":"2024-10-20T18:47:23.112Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:47:23.113Z"}
+{"level":"info","message":"Projeto criado com sucesso: 6715503be6083dc2153d4af0","timestamp":"2024-10-20T18:47:23.124Z"}
+{"level":"info","message":"Projeto ID: 6715503b6f4644abfdf518e0 deletado com sucesso","timestamp":"2024-10-20T18:47:23.129Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:47:23.134Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:47:23.135Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715503b6f4644abfdf518e4","timestamp":"2024-10-20T18:47:23.145Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 6715503b6f4644abfdf518e4","timestamp":"2024-10-20T18:47:23.147Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715503b6f4644abfdf518e7","timestamp":"2024-10-20T18:47:23.151Z"}
+{"level":"warn","message":"Projeto não encontrado: 6715503b6f4644abfdf518e7","timestamp":"2024-10-20T18:47:23.153Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:50:55.365Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715510fa3489e1d6c49b3f0","timestamp":"2024-10-20T18:50:55.367Z"}
+{"level":"info","message":"Projeto criado com sucesso: 6715510f0312c9eda481b743","timestamp":"2024-10-20T18:50:55.392Z"}
+{"level":"info","message":"Projeto ID: 6715510fa3489e1d6c49b3f0 atualizado com sucesso","timestamp":"2024-10-20T18:50:55.398Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:50:55.402Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:50:55.402Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715510f941261892f623682","timestamp":"2024-10-20T18:50:55.399Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715510fa3489e1d6c49b3f0","timestamp":"2024-10-20T18:50:55.411Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:50:55.411Z"}
+{"level":"info","message":"Projeto ID: 6715510f941261892f623682 deletado com sucesso","timestamp":"2024-10-20T18:50:55.427Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715510f941261892f623686","timestamp":"2024-10-20T18:50:55.440Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 6715510f941261892f623686","timestamp":"2024-10-20T18:50:55.443Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715510f941261892f623689","timestamp":"2024-10-20T18:50:55.447Z"}
+{"level":"warn","message":"Projeto não encontrado: 6715510f941261892f623689","timestamp":"2024-10-20T18:50:55.449Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:51:56.330Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715514cdac0f5c2702086a9","timestamp":"2024-10-20T18:51:56.336Z"}
+{"level":"info","message":"Projeto criado com sucesso: 6715514cb783de58f7640101","timestamp":"2024-10-20T18:51:56.361Z"}
+{"level":"info","message":"Projeto ID: 6715514cdac0f5c2702086a9 atualizado com sucesso","timestamp":"2024-10-20T18:51:56.367Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:51:56.373Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:51:56.374Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715514cdac0f5c2702086a9","timestamp":"2024-10-20T18:51:56.376Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:51:56.376Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715514c6d8909456a72d439","timestamp":"2024-10-20T18:51:56.384Z"}
+{"level":"info","message":"Projeto ID: 6715514c6d8909456a72d439 deletado com sucesso","timestamp":"2024-10-20T18:51:56.413Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715514c6d8909456a72d43d","timestamp":"2024-10-20T18:51:56.426Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 6715514c6d8909456a72d43d","timestamp":"2024-10-20T18:51:56.429Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715514c6d8909456a72d440","timestamp":"2024-10-20T18:51:56.433Z"}
+{"level":"warn","message":"Projeto não encontrado: 6715514c6d8909456a72d440","timestamp":"2024-10-20T18:51:56.435Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:52:47.243Z"}
+{"level":"info","message":"Projeto criado com sucesso: 6715517f279674fec6647a79","timestamp":"2024-10-20T18:52:47.272Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715517fa1907683f3ef34c0","timestamp":"2024-10-20T18:52:47.270Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:52:47.284Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:52:47.285Z"}
+{"level":"info","message":"Projeto ID: 6715517fa1907683f3ef34c0 atualizado com sucesso","timestamp":"2024-10-20T18:52:47.301Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715517fa1907683f3ef34c0","timestamp":"2024-10-20T18:52:47.311Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:52:47.312Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715517fb4c1cf2c279f5bed","timestamp":"2024-10-20T18:52:47.317Z"}
+{"level":"info","message":"Projeto ID: 6715517fb4c1cf2c279f5bed deletado com sucesso","timestamp":"2024-10-20T18:52:47.349Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715517fb4c1cf2c279f5bf1","timestamp":"2024-10-20T18:52:47.363Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 6715517fb4c1cf2c279f5bf1","timestamp":"2024-10-20T18:52:47.365Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715517fb4c1cf2c279f5bf4","timestamp":"2024-10-20T18:52:47.371Z"}
+{"level":"warn","message":"Projeto não encontrado: 6715517fb4c1cf2c279f5bf4","timestamp":"2024-10-20T18:52:47.373Z"}
+{"level":"debug","message":"Requisição recebida para suporte ao projeto ID: 6715517f4d78acf09db34530 com valor: 50","timestamp":"2024-10-20T18:52:47.431Z"}
+{"level":"info","message":"QR Code gerado para projeto ID: 6715517f4d78acf09db34530","timestamp":"2024-10-20T18:52:47.461Z"}
+{"level":"debug","message":"Requisição recebida para suporte ao projeto ID: 671551e5a49f407f167da688 com valor: 50","timestamp":"2024-10-20T18:54:29.596Z"}
+{"level":"info","message":"QR Code gerado para projeto ID: 671551e5a49f407f167da688","timestamp":"2024-10-20T18:54:29.624Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 671551e5fb99425d1260cabd","timestamp":"2024-10-20T18:54:29.659Z"}
+{"level":"info","message":"Projeto ID: 671551e5fb99425d1260cabd atualizado com sucesso","timestamp":"2024-10-20T18:54:29.688Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:54:29.682Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 671551e587ce114f0acc6d3e","timestamp":"2024-10-20T18:54:29.687Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 671551e5fb99425d1260cabd","timestamp":"2024-10-20T18:54:29.699Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:54:29.700Z"}
+{"level":"info","message":"Projeto criado com sucesso: 671551e5ef19311e354d530a","timestamp":"2024-10-20T18:54:29.717Z"}
+{"level":"info","message":"Projeto ID: 671551e587ce114f0acc6d3e deletado com sucesso","timestamp":"2024-10-20T18:54:29.719Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:54:29.726Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:54:29.727Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 671551e587ce114f0acc6d42","timestamp":"2024-10-20T18:54:29.734Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 671551e587ce114f0acc6d42","timestamp":"2024-10-20T18:54:29.737Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 671551e587ce114f0acc6d45","timestamp":"2024-10-20T18:54:29.744Z"}
+{"level":"warn","message":"Projeto não encontrado: 671551e587ce114f0acc6d45","timestamp":"2024-10-20T18:54:29.748Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 671551e55aa667132f7acee9 com valor: 200","timestamp":"2024-10-20T18:54:29.799Z"}
+{"level":"info","message":"Suporte confirmado para projeto ID: 671551e55aa667132f7acee9","timestamp":"2024-10-20T18:54:29.829Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 671551e55aa667132f7aceee com valor: 200","timestamp":"2024-10-20T18:54:29.839Z"}
+{"level":"warn","message":"Projeto não encontrado: 671551e55aa667132f7aceee","timestamp":"2024-10-20T18:54:29.841Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 671551ff61f274ebf5aa3e0c com valor: 200","timestamp":"2024-10-20T18:54:55.378Z"}
+{"level":"info","message":"Suporte confirmado para projeto ID: 671551ff61f274ebf5aa3e0c","timestamp":"2024-10-20T18:54:55.421Z"}
+{"level":"debug","message":"Requisição recebida para suporte ao projeto ID: 671551ff7321f3050831fcd3 com valor: 50","timestamp":"2024-10-20T18:54:55.425Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 671551ff61f274ebf5aa3e11 com valor: 200","timestamp":"2024-10-20T18:54:55.433Z"}
+{"level":"warn","message":"Projeto não encontrado: 671551ff61f274ebf5aa3e11","timestamp":"2024-10-20T18:54:55.435Z"}
+{"level":"info","message":"QR Code gerado para projeto ID: 671551ff7321f3050831fcd3","timestamp":"2024-10-20T18:54:55.459Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:54:55.468Z"}
+{"level":"info","message":"Projeto criado com sucesso: 671551ff54d8c21e5511f2bf","timestamp":"2024-10-20T18:54:55.497Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 671551ff1c3eaa3d1f61a8fb","timestamp":"2024-10-20T18:54:55.494Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:54:55.506Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:54:55.507Z"}
+{"level":"info","message":"Projeto ID: 671551ff1c3eaa3d1f61a8fb atualizado com sucesso","timestamp":"2024-10-20T18:54:55.522Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 671551ff1c3eaa3d1f61a8fb","timestamp":"2024-10-20T18:54:55.531Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:54:55.531Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 671551ff149c95572cc9bf92","timestamp":"2024-10-20T18:54:55.552Z"}
+{"level":"info","message":"Projeto ID: 671551ff149c95572cc9bf92 deletado com sucesso","timestamp":"2024-10-20T18:54:55.582Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 671551ff149c95572cc9bf96","timestamp":"2024-10-20T18:54:55.597Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 671551ff149c95572cc9bf96","timestamp":"2024-10-20T18:54:55.600Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 671551ff149c95572cc9bf99","timestamp":"2024-10-20T18:54:55.606Z"}
+{"level":"warn","message":"Projeto não encontrado: 671551ff149c95572cc9bf99","timestamp":"2024-10-20T18:54:55.608Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 6715521a697d572e7a28f59a com valor: 200","timestamp":"2024-10-20T18:55:22.397Z"}
+{"level":"debug","message":"Requisição recebida para suporte ao projeto ID: 6715521adc8147aebeff51c9 com valor: 50","timestamp":"2024-10-20T18:55:22.420Z"}
+{"level":"info","message":"Suporte confirmado para projeto ID: 6715521a697d572e7a28f59a","timestamp":"2024-10-20T18:55:22.435Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 6715521a697d572e7a28f59f com valor: 200","timestamp":"2024-10-20T18:55:22.448Z"}
+{"level":"warn","message":"Projeto não encontrado: 6715521a697d572e7a28f59f","timestamp":"2024-10-20T18:55:22.450Z"}
+{"level":"info","message":"QR Code gerado para projeto ID: 6715521adc8147aebeff51c9","timestamp":"2024-10-20T18:55:22.453Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:55:22.510Z"}
+{"level":"info","message":"Projeto criado com sucesso: 6715521af2a20e95d1caeb4b","timestamp":"2024-10-20T18:55:22.536Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:55:22.547Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:55:22.547Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715521a6117a40f63c172e7","timestamp":"2024-10-20T18:55:22.665Z"}
+{"level":"info","message":"Projeto ID: 6715521a6117a40f63c172e7 atualizado com sucesso","timestamp":"2024-10-20T18:55:22.694Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 6715521a6117a40f63c172e7","timestamp":"2024-10-20T18:55:22.703Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:55:22.704Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715521a378ab51158c05365","timestamp":"2024-10-20T18:55:22.705Z"}
+{"level":"info","message":"Projeto ID: 6715521a378ab51158c05365 deletado com sucesso","timestamp":"2024-10-20T18:55:22.736Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715521a378ab51158c05369","timestamp":"2024-10-20T18:55:22.750Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 6715521a378ab51158c05369","timestamp":"2024-10-20T18:55:22.752Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 6715521a378ab51158c0536c","timestamp":"2024-10-20T18:55:22.757Z"}
+{"level":"warn","message":"Projeto não encontrado: 6715521a378ab51158c0536c","timestamp":"2024-10-20T18:55:22.759Z"}
+{"level":"debug","message":"Requisição recebida para suporte ao projeto ID: 671552575edb0d2594fb767c com valor: 50","timestamp":"2024-10-20T18:56:23.145Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 67155257e9bcab4f001b6151 com valor: 200","timestamp":"2024-10-20T18:56:23.149Z"}
+{"level":"info","message":"QR Code gerado para projeto ID: 671552575edb0d2594fb767c","timestamp":"2024-10-20T18:56:23.176Z"}
+{"level":"info","message":"Suporte confirmado para projeto ID: 67155257e9bcab4f001b6151","timestamp":"2024-10-20T18:56:23.179Z"}
+{"level":"debug","message":"Requisição recebida para confirmação de suporte ao projeto ID: 67155257e9bcab4f001b6156 com valor: 200","timestamp":"2024-10-20T18:56:23.189Z"}
+{"level":"warn","message":"Projeto não encontrado: 67155257e9bcab4f001b6156","timestamp":"2024-10-20T18:56:23.191Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"New Project\",\"description\":\"This is a new project\",\"goal\":1000,\"image\":\"http://example.com/image.jpg\",\"deadline\":\"2024-12-31\",\"category\":\"Tecnologia\",\"author\":\"Project User\",\"chavePix\":\"1234567890\"}","timestamp":"2024-10-20T18:56:23.241Z"}
+{"level":"info","message":"Projeto criado com sucesso: 67155257e2bd1635f280f6d8","timestamp":"2024-10-20T18:56:23.264Z"}
+{"level":"debug","message":"Requisição recebida para criar projeto com dados: {\"title\":\"Incomplete Project\"}","timestamp":"2024-10-20T18:56:23.274Z"}
+{"level":"warn","message":"Categoria inválida: undefined","timestamp":"2024-10-20T18:56:23.275Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67155257f1a098dece36ea68","timestamp":"2024-10-20T18:56:23.270Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 67155257d7e6a64b226dbcd8","timestamp":"2024-10-20T18:56:23.275Z"}
+{"level":"info","message":"Projeto ID: 67155257f1a098dece36ea68 deletado com sucesso","timestamp":"2024-10-20T18:56:23.309Z"}
+{"level":"info","message":"Projeto ID: 67155257d7e6a64b226dbcd8 atualizado com sucesso","timestamp":"2024-10-20T18:56:23.313Z"}
+{"level":"debug","message":"Requisição recebida para atualizar o projeto ID: 67155257d7e6a64b226dbcd8","timestamp":"2024-10-20T18:56:23.323Z"}
+{"level":"warn","message":"Requisição de atualização do projeto faltando campos obrigatórios","timestamp":"2024-10-20T18:56:23.323Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67155257f1a098dece36ea6c","timestamp":"2024-10-20T18:56:23.325Z"}
+{"level":"warn","message":"Usuário sem permissão para deletar o projeto ID: 67155257f1a098dece36ea6c","timestamp":"2024-10-20T18:56:23.329Z"}
+{"level":"debug","message":"Requisição recebida para deletar o projeto ID: 67155257f1a098dece36ea6f","timestamp":"2024-10-20T18:56:23.334Z"}
+{"level":"warn","message":"Projeto não encontrado: 67155257f1a098dece36ea6f","timestamp":"2024-10-20T18:56:23.336Z"}
